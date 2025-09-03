@@ -14,37 +14,40 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 glass-header shadow-header">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between h-20">
+          {/* Modern Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-soft">
+              <Sparkles className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-foreground">AI Agent</span>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-foreground tracking-tight">AI Agent</span>
+              <span className="text-xs text-muted-foreground -mt-1">Professional AI Kit</span>
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Modern Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
               >
                 {item.name}
               </a>
             ))}
           </nav>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
+          {/* Modern Right Side Actions */}
+          <div className="flex items-center space-x-2">
             <ThemeToggle />
-            <Button variant="ghost" className="hidden md:inline-flex">
+            <Button variant="ghost" className="hidden md:inline-flex text-sm font-medium">
               Sign In
             </Button>
-            <Button variant="default" className="bg-gradient-primary hover:opacity-90">
+            <Button size="lg" className="shadow-soft hover:shadow-glow font-medium">
               Get Started Free
             </Button>
 
@@ -60,23 +63,28 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Modern Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-2">
+          <div className="md:hidden py-6 border-t border-border/50">
+            <nav className="flex flex-col space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground py-2 transition-colors"
+                  className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button variant="ghost" className="justify-start mt-4">
-                Sign In
-              </Button>
+              <div className="pt-4 mt-4 border-t border-border/50">
+                <Button variant="ghost" className="w-full justify-start mb-2">
+                  Sign In
+                </Button>
+                <Button className="w-full">
+                  Get Started Free
+                </Button>
+              </div>
             </nav>
           </div>
         )}
